@@ -11,33 +11,45 @@ class App extends Component {
   };
   render() {
     const { select } = this.state;
+    const styles = {
+      borderstyle: {
+        border: "solid 3px #FFFF99"
+      }
+    };
+    const { borderstyle } = styles;
     return (
       <MyProvider>
         <div className="App">
-          <div className="Selection">
-            <div
-              className="dogCard1"
-              onClick={() => this.setState({ select: 1 })}
-            >
-              Select the first dog
+          <div className="Hayden">
+            <h1 className="header">TAMAGOTCHI</h1>
+            <div className="Selection">
+              <div
+                className="dogCard"
+                onClick={() => this.setState({ select: 1 })}
+                style={select === 1 ? borderstyle : null}
+              >
+                Storm
+              </div>
+              <div
+                className="dogCard"
+                onClick={() => this.setState({ select: 2 })}
+                style={select === 2 ? borderstyle : null}
+              >
+                {" "}
+                Trooper
+              </div>
+              <div
+                className="dogCard"
+                onClick={() => this.setState({ select: 3 })}
+                style={select === 3 ? borderstyle : null}
+              >
+                {" "}
+                Goliath
+              </div>
             </div>
-            <div
-              className="dogCard2"
-              onClick={() => this.setState({ select: 2 })}
-            >
-              {" "}
-              Select the 2 dog
+            <div className="DogStatus">
+              {select === 1 ? <Dog1 /> : select === 2 ? <Dog2 /> : <Dog3 />}
             </div>
-            <div
-              className="dogCard3"
-              onClick={() => this.setState({ select: 3 })}
-            >
-              {" "}
-              Select the 3 dog
-            </div>
-          </div>
-          <div className="DogStatus">
-            {select === 1 ? <Dog1 /> : select === 2 ? <Dog2 /> : <Dog3 />}
           </div>
         </div>
       </MyProvider>
